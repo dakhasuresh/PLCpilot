@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+*.st.bak
+plc_generated_*.st
+node_modules/
+.DS_Store
