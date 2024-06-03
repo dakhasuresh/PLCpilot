@@ -1,0 +1,27 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: unless-stopped
+
+  flask_simulator:
+    build:
+      context: .
+    container_name: flask_simulator
+    depends_on:
+      - mosquitto
+    volumes:
+      - ./app:/app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - iot_net
+
+networks:
+  iot_net:
+    driver: bridge
