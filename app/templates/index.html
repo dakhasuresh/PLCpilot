@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLCpilot – Simulator Control</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 60px auto; padding: 20px; }
+        h2 { color: #333; }
+        button { padding: 10px 24px; font-size: 16px; margin-right: 10px; cursor: pointer; border: none; border-radius: 4px; }
+        button[type=submit]:not([disabled]) { background: #0066cc; color: white; }
+        button[disabled] { background: #ccc; cursor: not-allowed; }
+        .status { margin-top: 20px; font-size: 18px; }
+        .running { color: green; }
+        .stopped { color: red; }
+    </style>
+</head>
+<body>
+    <h2>⚙️ PLCpilot – Machine Tag Simulator</h2>
+    <p>Publishes MQTT data for 10 machines × 5 tags × 3 phases at 1-second intervals.</p>
+
+    <form method="post" action="/start" style="display:inline">
+        <button type="submit" {{ 'disabled' if simulating }}>▶ Start Simulation</button>
+    </form>
+    <form method="post" action="/stop" style="display:inline">
+        <button type="submit" {{ 'disabled' if not simulating }}>■ Stop Simulation</button>
+    </form>
+
+    <div class="status">
+        Status: <strong class="{{ 'running' if simulating else 'stopped' }}">
+            {{ 'Running' if simulating else 'Stopped' }}
+        </strong>
+    </div>
+
+    <hr>
+    <h4>MQTT Topic Structure</h4>
+    <code>{machine}/{tag}/{phase}</code>
+    <p>Example: <code>machine1/temperature/phase1</code></p>
+</body>
+</html>
