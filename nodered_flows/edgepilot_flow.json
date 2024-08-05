@@ -1,0 +1,47 @@
+[
+  {
+    "id": "inject_temp",
+    "type": "inject",
+    "name": "Simulate Temperature",
+    "props": [{"p": "payload"}],
+    "repeat": "10",
+    "payload": "80",
+    "payloadType": "num",
+    "wires": [["write_modbus"]]
+  },
+  {
+    "id": "write_modbus",
+    "type": "modbus-write",
+    "name": "Write Temp to %MW0",
+    "dataType": "HoldingRegister",
+    "adr": "1024",
+    "quantity": "1",
+    "server": "modbus_server",
+    "wires": []
+  },
+  {
+    "id": "read_coils",
+    "type": "modbus-read",
+    "name": "Read Fan/Alarm Coils",
+    "dataType": "Coil",
+    "adr": "0",
+    "quantity": "2",
+    "server": "modbus_server",
+    "wires": [["debug_output"]]
+  },
+  {
+    "id": "debug_output",
+    "type": "debug",
+    "name": "Coil Status",
+    "active": true,
+    "wires": []
+  },
+  {
+    "id": "modbus_server",
+    "type": "modbus-client",
+    "name": "OpenPLC Modbus",
+    "clienttype": "tcp",
+    "tcpHost": "127.0.0.1",
+    "tcpPort": "502"
+  }
+]
