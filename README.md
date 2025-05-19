@@ -20,41 +20,41 @@ PLCpilot is an AI-driven edge automation platform that bridges the gap between *
 
 ```
 Sensor Data (Node-RED/MQTT)
-        │
-        ▼
-┌─────────────────────┐
-│  Anomaly Detection  │  ← Detects drift, out-of-range, missing pulses
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Root Cause Agent   │  ← Maps anomaly to cause category
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Prompt Generation  │  ← Converts cause to GenAI prompt
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  GenAI Code Agent   │  ← Ollama LLaMA3 → Structured Text (.st)
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Deployment Agent   │  ← Pushes to OpenPLC, monitors compile
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│  Human Notification │  ← Email/MQTT alert, approval request
-└────────┬────────────┘
-         │
-         ▼
-┌─────────────────────┐
-│   Learning Agent    │  ← Logs outcomes, improves future prompts
-└─────────────────────┘
+         |
+         v
++---------------------+
+|  Anomaly Detection  |  <-- Detects drift, out-of-range, missing pulses
++---------------------+
+         |
+         v
++---------------------+
+|  Root Cause Agent   |  <-- Maps anomaly to cause category
++---------------------+
+         |
+         v
++---------------------+
+|  Prompt Generation  |  <-- Converts cause to GenAI prompt
++---------------------+
+         |
+         v
++---------------------+
+|  GenAI Code Agent   |  <-- Ollama LLaMA3 -> Structured Text (.st)
++---------------------+
+         |
+         v
++---------------------+
+|  Deployment Agent   |  <-- Pushes to OpenPLC, monitors compile
++---------------------+
+         |
+         v
++---------------------+
+|  Human Notification |  <-- Email/MQTT alert, approval request
++---------------------+
+         |
+         v
++---------------------+
+|   Learning Agent    |  <-- Logs outcomes, improves future prompts
++---------------------+
 ```
 
 ---
@@ -183,4 +183,20 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 👤 Author
 
-Built as part of the **GTV Application** project demonstrating GenAI integration with industrial edge automation.
+**Suresh Dakha**
+Senior Solution Architect — Physical AI, Edge AI & OT Cybersecurity
+
+Passionate about making industrial automation intelligent, accessible, and secure —
+bringing GenAI to the factory floor for manufacturers of every size.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-suresh--dakha-blue?logo=linkedin)](https://linkedin.com/in/suresh-dakha)
+[![GitHub](https://img.shields.io/badge/GitHub-dakhasuresh-black?logo=github)](https://github.com/dakhasuresh)
+
+---
+
+## 🔗 More Projects
+
+Explore my other repositories covering OT Security, Edge AI and Physical AI:
+
+[![OT Asset Classifier](https://img.shields.io/badge/Repo-OT--Asset--Classifier-orange?logo=github)](https://github.com/dakhasuresh/ot-asset-classifier)
+[![GitHub Profile](https://img.shields.io/badge/All%20Repos-dakhasuresh-black?logo=github)](https://github.com/dakhasuresh?tab=repositories)
